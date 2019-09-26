@@ -9,7 +9,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Back.App\Back.App.csproj" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="6.0.0-a00-00-0058-develop" />
+    <PackageReference Include="CK.DB.User.UserOidc" Version="6.0.0-a00-00-0039-develop" />
+    <PackageReference Include="CK.DB.User.UserPassword" Version="6.0.0-a00-00-0037-develop" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+
+    <!-- This is required because there is a mess in the .Net core 2.2 dependencies for these beasts. -->
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.6.0" />
+
+    <!-- This creates the dependency to the Setup. -->
     <ProjectReference Include="..\CKSetup\CKSetup.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
   

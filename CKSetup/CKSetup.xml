@@ -20,7 +20,7 @@
   </Aspect>
   <!--BinPaths: please see https://gitlab.com/signature-code/CK-Database/raw/develop/CK.StObj.Model/Configuration/BinPath.cs for documentation.-->
   <BinPaths>
-    <BinPath Path="../Front.App/bin/Debug/netstandard2.0">
+    <BinPath Path="../Front.Web/bin/Debug/netcoreapp2.2">
       <Assemblies />
       <Types />
       <ExternalSingletonTypes />
@@ -30,7 +30,7 @@
       <SkipCompilation>true</SkipCompilation>
       <GenerateSourceFiles>true</GenerateSourceFiles>
     </BinPath>
-    <BinPath Path="../Back.App/bin/Debug/netstandard2.0">
+    <BinPath Path="../Back.Web/bin/Debug/netcoreapp2.2">
       <Assemblies />
       <Types />
       <ExternalSingletonTypes />
@@ -47,6 +47,5 @@
   <!-- The name is explicitly empty: timed folders will be created rith below WorkingDir/ -->
   <CKSetupName></CKSetupName>
 
-  <PreferredTargetRuntimes>NetCoreApp21</PreferredTargetRuntimes>
 </Setup>
 

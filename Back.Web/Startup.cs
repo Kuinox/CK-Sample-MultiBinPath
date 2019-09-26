@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CK.AspNet.Auth;
 using CK.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Front.App
+namespace Back.Web
 {
     public class Startup
     {
@@ -26,18 +27,23 @@ namespace Front.App
 
         public void ConfigureServices( IServiceCollection services )
         {
+            services
+                .AddAuthentication( o => o.DefaultScheme = WebFrontAuthOptions.OnlyAuthenticationScheme )
+                .AddWebFrontAuth( options =>
+                {
+                    options.ExpireTimeSpan = TimeSpan.FromDays( 1 );
+                } );
             // The entry point assembly contains the generated code.
             services.AddCKDatabase( _startupMonitor, System.Reflection.Assembly.GetEntryAssembly() );
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure( IApplicationBuilder app, IHostingEnvironment env )
+        public void Configure( IApplicationBuilder app )
         {
-            if( env.IsDevelopment() )
+            if( _hostingEnvironment.IsDevelopment() )
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseGuardRequestMonitor();
             app.Run( async ( context ) =>
              {
                  await context.Response.WriteAsync( "Hello World!" );

@@ -1,7 +1,7 @@
 using CK.Core;
 using System;
 
-namespace Back.App
+namespace Back.Web
 {
     public class RealObjectSample : IRealObject
     {
